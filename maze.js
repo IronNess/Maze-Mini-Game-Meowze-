@@ -46,5 +46,6 @@ document.addEventListener('keydown' , (e) => {
                         break;
                     }
                     player.style.gridRow = playerRow + 1;
-                    player.style.gridCol = playerCol + 1;
+                    player.style.gridColumn = playerCol + 1;
+            
                 });
