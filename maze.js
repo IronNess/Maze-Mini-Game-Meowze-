@@ -16,35 +16,35 @@ for (let i = 0; i < rows; i++) {
 }
 
 // players position on maze
-let PlayerRow = 0;
-let PlayerCol = 0;
-player.style.gridRow = PlayerRow + 1;
+let playerRow = 0;
+let playerCol = 0;
+player.style.gridRow = playerRow + 1;
 player.style.gridCol = playerCol + 1;
 
 // Keyboard input
 document.addEventListener('keydown' , (e) => {
     switch (e.key) {
         case 'ArrowUp':
-            if (PlayerRow > 0) {
-                PlayerRow--;
+            if (playerRow > 0) {
+                playerRow--;
             }
             break;
             case 'ArrowDown':
-                if (PlayerRow < rows - 1) {
-                    PlayerRow++;
+                if (playerRow < rows - 1) {
+                    playerRow++;
                 }
                 break;
                 case 'ArrowLeft':
-                    if (PlayerCol > 0) {
-                        PlayerCol--;
+                    if (playerCol > 0) {
+                        playerCol--;
                     }
                     break;
                     case 'ArrowRight':
-                        if (PlayerCol < cols - 1) {
-                            PlayerCol++;
+                        if (playerCol < cols - 1) {
+                            playerCol++;
                         }
                         break;
                     }
-                    player.style.gridRow = PlayerRow + 1;
-                    player.style.gridCol = PlayerCol + 1;
+                    player.style.gridRow = playerRow + 1;
+                    player.style.gridCol = playerCol + 1;
                 });
