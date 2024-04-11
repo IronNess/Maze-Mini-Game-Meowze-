@@ -22,6 +22,11 @@ body {
 
 }
 
-.player {
+.cell.wall {
+ background-color:rgb(253, 85, 85)
+}
+
+
+.cell.player {
     background-color:rgb(253, 252, 252)
 }

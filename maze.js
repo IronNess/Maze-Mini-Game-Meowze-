@@ -15,8 +15,8 @@ const maze = [
 ];
 
 
-// maze grid
-for (let i = 0; i < rows; i++) {
+function createMaze() {
+for (let i = 0; i < maze.length; i++) {
     for (let j =0; j < cols; j++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
