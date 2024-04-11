@@ -1,6 +1,4 @@
-const mazeGrid = document.getElementById('maze');
-const rows = 10;
-const cols = 10;
+
 const maze = [
     [0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
     [0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
@@ -14,59 +12,75 @@ const maze = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
 
+const mazeElement = document.getElementById('maze');
 
 function createMaze() {
-for (let i = 0; i < maze.length; i++) {
-    for (let j =0; j < maze[i].length; j++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        if (maze[i][j] === 0) {
-            cell.classList.add('wall');
-        } else if (i=== 0 && j === 0){
-            cell.classList.add('start');
-        } else if (i === maze.length - 1 && j === maze[i].length - 1) {
-            cell.classListList.add('end');
+    for (let i = 0; i < maze.length; i++) {
+        for (let j =0; j < maze[i].length; j++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            if (maze[i][j] === 0) {
+                cell.classList.add('wall');
+            } else if (i=== 0 && j === 0) {
+                cell.classList.add('start');
+            } else if (i === maze.length - 1 && j === maze[i].length - 1) {
+                cell.classList.add('end');
+            }
+            mazeElement.appendChild(cell);
         }
-        mazeElement.appendChild(cell);
     }
 }
-}
 
-const player = document.createElement('div');
-player.classList.add('player');
-mazeGrid.appendChild(player);
+function movePLayer(event) {
+    const key = event.key;
+    let playerPosition = document.querySelector('.player');
+    let [row, col] = getPlayerPosition(playerPosition);
+    let newRow = row;
+    let newCol = col;
 
-// players position on maze
-let playerRow = 0;
-let playerCol = 0;
-player.style.gridRow = playerRow + 1;
-player.style.gridColumn = playerCol + 1;
-
-// Keyboard input
-document.addEventListener('keydown' , (e) => {
-    switch (e.key) {
+    switch (key) {
         case 'ArrowUp':
-            if (playerRow > 0) {
-                playerRow--;
-            }
+           newRow = row -1;
             break;
             case 'ArrowDown':
-                if (playerRow < rows - 1) {
-                    playerRow++;
-                }
+                newRow = row +1
                 break;
                 case 'ArrowLeft':
-                    if (playerCol > 0) {
-                        playerCol--;
-                    }
-                    break;
-                    case 'ArrowRight':
-                        if (playerCol < cols - 1) {
-                            playerCol++;
-                        }
-                        break;
-                    }
-                    player.style.gridRow = playerRow + 1;
-                    player.style.gridColumn = playerCol + 1;
-            
-                });
+                newCol = col -1;
+                break;
+                case 'ArrowRight':
+                  newCol = col +1;
+                  break;
+                  default:
+                    return;
+    }
+
+
+            if (ifValidMove(newRow, newCol)) {
+                playerPosition.classList.remove('player');
+                mazeElement.children[newRow * maze.length + newCol].classList.add('player');
+            }
+
+            if (newRow === maze.length - 1 && newCol === maze[newRow].length - 1) {
+                alert('Congratulations, You completed the maze!');
+                window.removeEventListener('keydown', movePlayer);
+            }
+}
+
+
+                function getPlayerPosition(playerPoistion) {
+                const index = Array.from(mazeElement.children).indexOf(playerPosition);
+                const row = Math.floor(index / maze.length);
+                const col = index % maze.length;
+                return [row, col];
+                }
+
+                function ifValidMove(row, col) {
+                    return row >= 0 && row < maze.length && col >= 0 && col < maze[row].length && maze[row][col] === 1;
+                }
+
+                createMaze();
+                mazeElement.children[0].classList.add('player');
+                window.addEventListener('keydown', movePlayer);
+
+

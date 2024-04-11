@@ -14,7 +14,7 @@ body {
     border: 2px solid #000;
     width: 500px;
     height: 500px;
-    background-color: hsl(340, 98%, 49%)
+    background-color: hsl(0, 0%, 100%)
 }
 
 .cell {
@@ -22,10 +22,16 @@ body {
 
 }
 
+.cell.start {
+    background-color:rgb(227, 0, 212)
+}
+
+.cell.end {
+    background-color:hsl(288, 100%, 50%)
+}
 .cell.wall {
  background-color:rgb(253, 85, 85)
 }
-
 
 .cell.player {
     background-color:rgb(253, 252, 252)
