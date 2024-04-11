@@ -1,9 +1,18 @@
-const maze = document.getElementById('maze');
+const mazeGrid = document.getElementById('maze');
 const rows = 10;
 const cols = 10;
-const player = document.createElement('div');
-player.classList.add('player');
-maze.appendChild(player);
+const maze = [
+    [0, 1, 0, 0, 1, 0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [1, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+    [0, 0, 1, 0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+];
 
 
 // maze grid
@@ -11,15 +20,24 @@ for (let i = 0; i < rows; i++) {
     for (let j =0; j < cols; j++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
-        maze.appendChild(cell);
+        if (maze[i][j] === 0) {
+            cell.classList.add('path');
+        } else {
+            cell.classList.add('wall');
+        }
+        mazeGrid.appendChild(cell);
     }
 }
+
+const player = document.createElement('div');
+player.classList.add('player');
+mazeGrid.appendChild(player);
 
 // players position on maze
 let playerRow = 0;
 let playerCol = 0;
 player.style.gridRow = playerRow + 1;
-player.style.gridCol = playerCol + 1;
+player.style.gridColumn = playerCol + 1;
 
 // Keyboard input
 document.addEventListener('keydown' , (e) => {
