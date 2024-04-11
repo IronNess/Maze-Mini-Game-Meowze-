@@ -17,16 +17,19 @@ const maze = [
 
 function createMaze() {
 for (let i = 0; i < maze.length; i++) {
-    for (let j =0; j < cols; j++) {
+    for (let j =0; j < maze[i].length; j++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
         if (maze[i][j] === 0) {
-            cell.classList.add('path');
-        } else {
             cell.classList.add('wall');
+        } else if (i=== 0 && j === 0){
+            cell.classList.add('start');
+        } else if (i === maze.length - 1 && j === maze[i].length - 1) {
+            cell.classListList.add('end');
         }
-        mazeGrid.appendChild(cell);
+        mazeElement.appendChild(cell);
     }
+}
 }
 
 const player = document.createElement('div');
