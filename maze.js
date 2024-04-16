@@ -31,7 +31,7 @@ function createMaze() {
     }
 }
 
-function movePLayer(event) {
+function movePlayer(event) {
     const key = event.key;
     let playerPosition = document.querySelector('.player');
     let [row, col] = getPlayerPosition(playerPosition);
@@ -40,23 +40,23 @@ function movePLayer(event) {
 
     switch (key) {
         case 'ArrowUp':
-           newRow = row -1;
+           newRow = row - 1;
             break;
             case 'ArrowDown':
-                newRow = row +1
+                newRow = row + 1
                 break;
                 case 'ArrowLeft':
-                newCol = col -1;
+                newCol = col - 1;
                 break;
                 case 'ArrowRight':
-                  newCol = col +1;
+                  newCol = col + 1;
                   break;
                   default:
                     return;
     }
 
 
-            if (ifValidMove(newRow, newCol)) {
+            if (isValidMove(newRow, newCol)) {
                 playerPosition.classList.remove('player');
                 mazeElement.children[newRow * maze.length + newCol].classList.add('player');
             }
@@ -68,15 +68,15 @@ function movePLayer(event) {
 }
 
 
-                function getPlayerPosition(playerPoistion) {
+                function getPlayerPosition(playerPosition) {
                 const index = Array.from(mazeElement.children).indexOf(playerPosition);
                 const row = Math.floor(index / maze.length);
                 const col = index % maze.length;
                 return [row, col];
                 }
 
-                function ifValidMove(row, col) {
-                    return row >= 0 && row < maze.length && col >= 0 && col < maze[row].length && maze[row][col] === 1;
+                function isValidMove(row, col) {
+                    return row >= 0 && row < maze.length && col >= 0 && col < maze[row].length && maze[row][col] !== 0;
                 }
 
                 createMaze();
