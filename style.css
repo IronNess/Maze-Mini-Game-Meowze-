@@ -6,9 +6,9 @@
     1px -1px 0 rgba(255, 255, 255, 0.3), -1px 1px 0 rgba(255, 255, 255, 0.3),
     1px 1px 0 rgba(255, 255, 255, 0.3);
   --color: #333333;
-  --background-color: #ffa500;
+  --background-color: #feb109;
   --font-family: "Caveat", cursive;
-  --maze-color: rgb(117, 29, 29);
+  --maze-color: rgb(252, 3, 3);
 }
 
 /* Default Styles */
