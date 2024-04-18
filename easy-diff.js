@@ -94,7 +94,8 @@ easyMaze.forEach((row, rowIndex) => {
       box.style.background = "url(images/cat-food.png) center";
       box.style.backgroundSize = "cover";
     }
-
+    //image icon stall 2024
+     
     // Adds the random stuff scattered around the maze
     if (rowIndex === 7 && colIndex === 3) {
       box.style.background = "url(images/dead-fish.png) center";
@@ -110,6 +111,7 @@ easyMaze.forEach((row, rowIndex) => {
       box.style.background = "url(images/dead-fish.png) center";
       box.style.backgroundSize = "cover";
     }
+    //Clipart Library 2024
     if (rowIndex === 9 && colIndex === 2) {
       box.style.background = "url(images/ball-of-yarn.png) center";
       box.style.backgroundSize = "cover";
