@@ -1,1 +1,2 @@
 Moewze was created as a Single Webpage application game featuring JavaScript, CSS and HTML components. The main player visualises a cat, who has a goal of collecting interactive elements within the maze and reaching its final destination of a bowl full of cat food. With score and difficulty level, it is a simple but expansive game.
+<img width="1340" height="951" alt="screenshot game 2" src="https://github.com/user-attachments/assets/d14c8342-015a-40be-8a8b-b69ea55e1837" />
